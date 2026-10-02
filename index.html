@@ -5921,5 +5921,59 @@ html[data-lang="vi"] #stakeholder .stake-title-vi{display:inline}
 })();
 </script>
 
+<!-- Cloudflare Web Analytics with owner exclusion -->
+<script>
+(function () {
+    const params = new URLSearchParams(window.location.search);
+
+    function setOwnerFlag(enabled) {
+        try {
+            if (enabled) {
+                localStorage.setItem('portfolio_owner', '1');
+            } else {
+                localStorage.removeItem('portfolio_owner');
+            }
+        } catch (e) {
+            // If localStorage is unavailable, analytics remains enabled.
+        }
+    }
+
+    const ownerMode = params.get('owner');
+
+    if (ownerMode === '1') {
+        setOwnerFlag(true);
+    } else if (ownerMode === '0') {
+        setOwnerFlag(false);
+    }
+
+    if (ownerMode === '1' || ownerMode === '0') {
+        params.delete('owner');
+        const cleanUrl =
+            window.location.pathname +
+            (params.toString() ? '?' + params.toString() : '') +
+            window.location.hash;
+        history.replaceState({}, '', cleanUrl);
+    }
+
+    let isOwner = false;
+    try {
+        isOwner = localStorage.getItem('portfolio_owner') === '1';
+    } catch (e) {
+        isOwner = false;
+    }
+
+    if (!isOwner) {
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+        script.setAttribute(
+            'data-cf-beacon',
+            '{"token":"1d8cdbee27e8475db34854dc1e843ae1"}'
+        );
+        document.body.appendChild(script);
+    }
+})();
+</script>
+<!-- End Cloudflare Web Analytics -->
 </body>
 </html>
