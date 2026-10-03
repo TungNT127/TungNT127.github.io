@@ -4873,6 +4873,67 @@ html[data-lang="vi"] #strategy .cfp-tile small{
 }
 </style>
 
+
+<style id="v51-slide7-centered-header-aligned">
+/* V51 — Slide 07: align eyebrow typography with the other finance slides and center the whole content composition vertically. */
+
+/* Match the final Slide 08 eyebrow treatment. */
+#strategy .cfp-head > .eyebrow{
+  margin:0 !important;
+  color:var(--accent) !important;
+  font-size:13px !important;
+  line-height:normal !important;
+  letter-spacing:.13em !important;
+  font-weight:800 !important;
+  text-transform:uppercase !important;
+}
+html[data-lang="vi"] #strategy .cfp-head > .eyebrow{
+  letter-spacing:.055em !important;
+}
+
+/* Treat eyebrow + headline + intro + note + 8-card grid as one composition
+   and center that composition within the slide's available content area. */
+#strategy .cfp-body{
+  height:100% !important;
+  min-height:0 !important;
+  box-sizing:border-box !important;
+  padding:0 !important;
+  align-self:stretch !important;
+  justify-content:center !important;
+}
+
+/* Keep the overview from stretching and disturbing whole-block centering. */
+#strategy .cfp-overview{
+  flex:0 0 auto !important;
+  min-height:0 !important;
+}
+
+/* Match the same reduced-height eyebrow size used by Slide 08. */
+@media(max-height:830px) and (min-width:1101px){
+  #strategy .cfp-head > .eyebrow{
+    font-size:11.5px !important;
+  }
+  #strategy .cfp-body{
+    padding:0 !important;
+    justify-content:center !important;
+  }
+}
+
+/* On tablet/mobile, natural document flow is safer than forced vertical centering. */
+@media(max-width:1100px){
+  #strategy .cfp-body{
+    height:auto !important;
+    align-self:center !important;
+    justify-content:flex-start !important;
+    padding:20px 0 !important;
+  }
+}
+@media(max-width:640px){
+  #strategy .cfp-body{
+    padding:14px 0 !important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="site-header" id="siteHeader">
